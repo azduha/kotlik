@@ -1,6 +1,15 @@
-export { createServer } from "./lib";
-export * from "./lib/types/IAbstractState";
-export * from "./lib/types/IHandler";
-export * from "./lib/types/IModules";
-export * from "./lib/types/IServer";
-export * from "./lib/types/IServerConfiguration";
+import { createServer } from "./lib";
+import * as _IAbstractState from "./lib/types/IAbstractState";
+import * as _IHandler from "./lib/types/IHandler";
+import * as _IModules from "./lib/types/IModules";
+import * as _IServer from "./lib/types/IServer";
+import * as _IServerConfiguration from "./lib/types/IServerConfiguration";
+
+export default {
+    createServer,
+    ..._IAbstractState,
+    ..._IHandler,
+    ..._IModules,
+    ..._IServer,
+    ..._IServerConfiguration,
+};
