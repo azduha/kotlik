@@ -11,10 +11,8 @@ type TeamState = {
 };
 type AppStateType = {};
 
-const port = process.env.PORT as any as number;
-
 createServer<TeamState, AppStateType>({
-    port,
+    port: (process.env.PORT as any) || 3000,
     sql: {
         host: process.env.MYSQL_HOST,
         user: process.env.MYSQL_USER,
@@ -30,7 +28,11 @@ createServer<TeamState, AppStateType>({
         },
     },
     onCreated: async (server) => {
-        console.log(`[server]: Server is running at http://localhost:${port}`);
+        console.log(
+            `[server]: Server is running at http://localhost:${
+                (process.env.PORT as any) || 3000
+            }`
+        );
     },
     dashboard: {
         password: process.env.ADMIN_PASSWORD!,
